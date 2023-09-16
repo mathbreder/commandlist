@@ -239,7 +239,7 @@ export class FileSystemProvider implements vscode.TreeDataProvider<Entry>, vscod
         time: file.time
       };
 
-      const fileName = command.label || command.script || 'No Name'
+      const fileName = command.label || command.script || 'No Name';
       const sanitizedFilename = sanitize(fileName).slice(0, 250);
       const newUri = vscode.Uri.file(`${this.getDirectoryPath(element.uri.fsPath)}/${sanitizedFilename}.json`);
       await this.delete(element.uri, { recursive: false });
