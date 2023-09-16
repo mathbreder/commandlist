@@ -1,11 +1,11 @@
-import * as vscode from "vscode";
-import * as path from "path";
-import * as fs from "fs";
-import mkdirp from "mkdirp";
-import rimraf from "rimraf";
-import sanitize from "sanitize-filename";
-import { Entry } from "./type/Entry";
-import { Command } from "./type/Command";
+import * as vscode from 'vscode';
+import * as path from 'path';
+import * as fs from 'fs';
+import { mkdirp } from 'mkdirp';
+import rimraf from 'rimraf';
+import sanitize from 'sanitize-filename';
+import { Entry } from './type/Entry';
+import { Command } from './type/Command';
 
 //#region Utilities
 
@@ -107,10 +107,8 @@ namespace _ {
     });
   }
 
-  export function mkdir(path: string): Promise<void> {
-    return new Promise<void>((resolve, reject) => {
-      mkdirp(path, (error) => handleResult(resolve, reject, error, void 0));
-    });
+  export function mkdir(folderPath: string): Promise<void> {
+    return mkdirp(folderPath).then(() => {}).catch(error => { massageError(error); });
   }
 
   export function rename(oldPath: string, newPath: string): Promise<void> {
@@ -273,7 +271,7 @@ export class FileSystemProvider
         prompt: "📝 Edit command script",
         value: file.script ? file.script : "",
       });
-      if (script == null) return;
+      if (script == null) { return; }
       const label = await vscode.window.showInputBox({
         prompt: "🔖 Edit command label name",
         value: file.label ? file.label : file.script,
@@ -498,7 +496,7 @@ export class FileSystemProvider
           time = `${command.time}s`;
         }
         tooltip = command.script;
-        description = command.script != command.label ? command.script : "";
+        description = (command.script != command.label) ? command.script : '';
       } catch {
         label = "";
         time = "unknown command";
