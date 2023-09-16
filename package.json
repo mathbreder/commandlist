@@ -283,7 +283,7 @@
     "eslint-plugin-import": "npm:eslint-plugin-i@latest",
     "prettier": "3.0.3",
     "typescript": "^3.9.10",
-    "vsce": "^1.103.1",
+    "vsce": "^2.15.0",
     "vscode": "^1.1.37"
   },
   "dependencies": {
