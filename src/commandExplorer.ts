@@ -96,7 +96,7 @@ namespace _ {
   }
 
   export function mkdir(folderPath: string): Promise<void> {
-    return mkdirp(folderPath).then(() => {}).catch(error => { massageError(error) });
+    return mkdirp(folderPath).then(() => {}).catch(error => { massageError(error); });
   }
 
   export function rename(oldPath: string, newPath: string): Promise<void> {
@@ -200,7 +200,7 @@ export class FileSystemProvider implements vscode.TreeDataProvider<Entry>, vscod
   }
 
   private validateLabelName(value: string): string | null {
-    return value.length > 250 ? value : null
+    return value.length > 250 ? value : null;
   }
 
   addFolder(selected?: Entry){
@@ -224,20 +224,20 @@ export class FileSystemProvider implements vscode.TreeDataProvider<Entry>, vscod
         prompt: '📝 Edit command script',
         value:file.script ? file.script : ''
       });
-      if (script == null) return;
+      if (script == null) { return; }
       const label = await vscode.window.showInputBox({
         prompt: '🔖 Edit command label name',
         value: file.label ? file.label : file.script,
         validateInput: this.validateLabelName
-      })
-      if (label == null) return;
+      });
+      if (label == null) { return; }
       const command: Command = {
         script: script,
         label: label,
         time: file.time
       };
 
-      const fileName = command.label || command.script || 'No Name'
+      const fileName = command.label || command.script || 'No Name';
       const sanitizedFilename = sanitize(fileName).slice(0, 250);
       const newUri = vscode.Uri.file(`${this.getDirectoryPath(element.uri.fsPath)}/${sanitizedFilename}.json`);
       await this.delete(element.uri, { recursive: false });
@@ -394,7 +394,7 @@ export class FileSystemProvider implements vscode.TreeDataProvider<Entry>, vscod
         if(command.time) {
           time = `${command.time}s`;
         }
-        tooltip = command.script
+        tooltip = command.script;
         description = (command.script != command.label) ? command.script : '';
       } catch {
         label = '';
@@ -406,7 +406,7 @@ export class FileSystemProvider implements vscode.TreeDataProvider<Entry>, vscod
       treeItem.command = { command: `${this.viewId}.edit`, title: "Edit", arguments: [element], };
       treeItem.contextValue = 'file';
       treeItem.description = time ? description + ` [${time}]` : description;
-      treeItem.tooltip = tooltip
+      treeItem.tooltip = tooltip;
     }
     return treeItem;
   }
