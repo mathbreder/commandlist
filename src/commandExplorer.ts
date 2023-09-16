@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs';
-import mkdirp from 'mkdirp';
+import { mkdirp } from 'mkdirp';
 import rimraf from 'rimraf';
 import sanitize from 'sanitize-filename';
 import { Entry } from './type/Entry';
@@ -95,10 +95,8 @@ namespace _ {
     });
   }
 
-  export function mkdir(path: string): Promise<void> {
-    return new Promise<void>((resolve, reject) => {
-      mkdirp(path, error => handleResult(resolve, reject, error, void 0));
-    });
+  export function mkdir(folderPath: string): Promise<void> {
+    return mkdirp(folderPath).then(() => {}).catch(error => { massageError(error) });
   }
 
   export function rename(oldPath: string, newPath: string): Promise<void> {
