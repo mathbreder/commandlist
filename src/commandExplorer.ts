@@ -239,7 +239,7 @@ export class FileSystemProvider implements vscode.TreeDataProvider<Entry>, vscod
         time: file.time
       };
 
-      const fileName = command.label ? command.label : command.script ? command.script : 'No Name'
+      const fileName = command.label || command.script || 'No Name'
       const sanitizedFilename = sanitize(fileName).slice(0, 250);
       const newUri = vscode.Uri.file(`${this.getDirectoryPath(element.uri.fsPath)}/${sanitizedFilename}.json`);
       await this.delete(element.uri, { recursive: false });
@@ -421,12 +421,12 @@ export class FileSystemProvider implements vscode.TreeDataProvider<Entry>, vscod
     return (path.length - index) === 5;
   }
 
-  getFileName(path: string): string {
-    return path.slice(path.lastIndexOf('/') + 1);
+  getFileName(filePath: string): string {
+    return filePath.slice(filePath.lastIndexOf(path.sep) + 1);
   }
 
-  getDirectoryPath(path: string): string {
-    return path.slice(0, path.lastIndexOf('/'));
+  getDirectoryPath(directoryPath: string): string {
+    return directoryPath.slice(0, directoryPath.lastIndexOf(path.sep));
   }
 
   isExists(path: string): Promise<boolean> {
