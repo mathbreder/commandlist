@@ -4,10 +4,9 @@ import * as vscode from 'vscode';
 import { CommandExplorer } from './commandExplorer';
 import { CommandExecuter } from './commandExecuter';
 
-
 // this method is called when your extension is activated
 export function activate(context: vscode.ExtensionContext) {
-  if(context.storagePath){
+  if (context.storagePath) {
     new CommandExplorer('workSpaceCommandExplorer', context.storagePath);
     new CommandExecuter('workSpaceCommandExecuter', context);
   }
@@ -16,4 +15,8 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 // this method is called when your extension is deactivated
-export function deactivate() {}
+export function deactivate() {
+  if (vscode.workspace.getConfiguration('commandExplorer').get('clearOnExit')) {
+    vscode.commands.executeCommand('workbench.action.closeAllEditors');
+  }
+}
