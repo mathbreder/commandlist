@@ -56,7 +56,8 @@
       "commandList": [
         {
           "id": "workSpaceCommandExplorer",
-          "name": "workSpace"
+          "name": "workSpace",
+          "when": "workbenchState != 'empty'"
         },
         {
           "id": "globalCommandExplorer",
