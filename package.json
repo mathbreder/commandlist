@@ -280,7 +280,7 @@
     "vscode": "^1.1.37"
   },
   "dependencies": {
-    "mkdirp": "^0.5.1",
+    "mkdirp": "^3.0.1",
     "rimraf": "^2.7.1",
     "sanitize-filename": "^1.6.3",
     "uuid": "^3.4.0"
