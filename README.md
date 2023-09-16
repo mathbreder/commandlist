@@ -1,11 +1,11 @@
 ![commandlist](resources/preview.png)
-# Command List 
+
+# Command List
 
 [![MarketPlace](https://vsmarketplacebadge.apphb.com/version/yamajyn.commandlist.svg)](https://marketplace.visualstudio.com/items?itemName=yamajyn.commandlist)
 [![Installs](https://vsmarketplacebadge.apphb.com/installs-short/yamajyn.commandlist.svg)](https://marketplace.visualstudio.com/items?itemName=yamajyn.commandlist)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=9RLWXDPUFZC56&currency_code=JPY&source=url)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://marketplace.visualstudio.com/items/yamajyn.commandlist/license)
-
 
 Run and Save commands in WorkSpace or Global
 
@@ -38,8 +38,6 @@ click play mark
 
 right-click on command
 
-
-
 ## Release Note
 
 ### 1.1.0
@@ -47,13 +45,14 @@ right-click on command
 - Enabled to open the destination JSON files.
 - [BETA] Show progress bar
 
------------------------------------------------------------------------------------------------------------
+---
 
 ## Changelog
 
 see [here](https://github.com/yamajyn/commandlist/blob/master/CHANGELOG.md)
 
 ## License
+
 MIT
 
 **Happy Coding!**  😎

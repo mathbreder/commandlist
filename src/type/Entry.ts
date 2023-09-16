@@ -4,4 +4,3 @@ export interface Entry {
   uri: vscode.Uri;
   type: vscode.FileType;
 }
-

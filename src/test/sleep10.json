@@ -1,4 +1,4 @@
 {
-  "script":"sleep 10",
-  "time":10
+  "script": "sleep 10",
+  "time": 10
 }
